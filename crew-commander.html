@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/png" sizes ="32x32" href="./assets/favicon-32x32.png">
+        <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Bellefair&family=Barlow:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- =====Custom CSS===== -->
+    <link rel="stylesheet" href="./CSS/index.css">
+    <title>Frontend Mentor | Space Tourism</title>
+</head>
+<body class="crew">
+    <a href="#main" class="skip-to-content ff-serif">Skip To Content</a>
+<!-- Header -->
+    <header class="flex primary-header">
+        <div>
+            <img src="./assets/shared/logo.svg" class="logo" alt="space tourism logo">
+        </div>
+<!-- hamburger button -->
+        <!-- this aria-controls the id="primary-navigation" --->
+        <button class="mobile-nav-toggle" aria-controls="primary-navigation"> 
+            <span class="sr-only" aria-expanded="false">Menu</span>
+        </button>
+<!-- navigation -->
+        <nav class="nav">
+            <ul id="primary-navigation" data-visible="false" class="primary-navigation flex underline-indicators">
+                <!--
+                    Adding aria-hidden="true" to an element removes that element and all of its children from the accessibility tree. This can improve the experience for assistive technology users by hiding:
+                  -->
+                <li><a class="text-white uppercase letter-spacing-2" href="index.html"><span>00</span>Home</a></li>
+                <li><a class="text-white uppercase letter-spacing-2" href="moon.html"><span aria-hidden="true">01</span>Destination</a></li>
+                <li class="active"><a class="text-white uppercase letter-spacing-2" href="crew-commander.html"><span aria-hidden="true">02</span>Crew</a></li>
+                <li><a class="text-white uppercase letter-spacing-2" href="techonology.html"><span aria-hidden="true">03</span>Technology</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="grid-container grid-container--crew flow" style="--flowspace: 2rem;">
+        <h1 class="number-title"><span aria-hidden="true">02</span>Meet Your Crew</h1>
+
+<!-- Dots -->
+        <div class="dots-list dots-indicators flex" role="tablist" aria-label="crew-members-list">
+            <button role="tab" aria-controls="commander-tab" aria-selected="true" data-picture="commander-image"><span class="sr-only">Slide Title</span></button>
+            <button role="tab" aria-controls="engineer-tab" aria-selected="false" data-picture="engineer-image"><span class="sr-only">Slide Title</span></button>
+            <button role="tab" aria-controls="mission-specialist-tab" aria-selected="false" data-picture="mission-specialist-image"><span class="sr-only">Slide Title</span></button>
+            <button role="tab" aria-controls="pilot-tab" aria-selected="false" data-picture="pilot-image"><span class="sr-only">Slide Title</span></button>
+        </div>
+
+<!-- article -->
+            <!-- Douglas Hurley -->
+        <article id="commander-tab" class="crew-details flow" style="--flowspace: 1.5rem;" role="tabpanel">
+            <h2 class="crew-details__title fs-600 ff-sans-conds uppercase text-accent">Commander</h2>
+            <p class="fs-700 ff-serid uppercase text-light">Douglas Hurley</p>
+            <p class="text-accent">Douglas Gerald Hurley is an American engineer, former Marine Corps pilot 
+                and former NASA astronaut. He launched into space for the third time as 
+                commander of Crew Dragon Demo-2.</p>
+        </article>  
+            <!-- anousheh-anasri -->
+        <article  hidden id="engineer-tab" class="crew-details flow" style="--flowspace: 1.5rem;" role="tabpanel">
+            <h2 class="crew-details__title fs-600 ff-sans-conds uppercase text-accent">Flight Engineer</h2>
+            <p class="fs-700 ff-serid uppercase text-light">Anousheh Ansari</p>
+            <p class="text-accent">Anousheh Ansari is an Iranian American engineer and co-founder of Prodea Systems. 
+                Ansari was the fourth self-funded space tourist, the first self-funded woman to 
+                fly to the ISS, and the first Iranian in space. </p>
+        </article>  
+            <!-- Mark Shuttleworth -->
+        <article hidden id="mission-specialist-tab" class="crew-details flow" style="--flowspace: 1.5rem;" role="tabpanel">
+            <h2 class="crew-details__title fs-600 ff-sans-conds uppercase text-accent">Mission Specialist</h2>
+            <p class="fs-700 ff-serid uppercase text-light">Mark Shuttleworth</p>
+            <p class="text-accent">  Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind 
+                the Linux-based Ubuntu operating system. Shuttleworth became the first South 
+                African to travel to space as a space tourist. </p>
+        </article>
+
+            <!-- Victor Glover -->
+        <article hidden id="pilot-tab" class="crew-details flow" style="--flowspace: 1.5rem;" role="tabpanel">
+            <h2 class="crew-details__title fs-600 ff-sans-conds uppercase text-accent">Pilot</h2>
+            <p class="fs-700 ff-serid uppercase text-light">Victor Glover</p>
+            <p class="text-accent">    Pilot on the first operational flight of the SpaceX Crew Dragon to the 
+                International Space Station. Glover is a commander in the U.S. Navy where 
+                he pilots an F/A-18.He was a crew member of Expedition 64, and served as a 
+                station systems flight engineer.  </p>
+        </article>
+
+<!-- picture -->
+       <picture class="picture" id="commander-image">
+            <source srcset="assets/crew/image-douglas-hurley.webp" type="image/webp">
+            <img src="./assets/crew/image-douglas-hurley.png" alt="douglas-hurley">
+       </picture>
+       <picture hidden class="picture" id="engineer-image">
+            <source srcset="assets/crew/image-anousheh-ansari.webp" type="image/webp">
+            <img src="./assets/crew/image-anousheh-ansari.png" alt="anousheh-ansari">
+       </picture>
+       <picture hidden class="picture" id="mission-specialist-image">
+            <source srcset="assets/crew/image-mark-shuttleworth.webp" type="image/webp">
+            <img src="./assets/crew/image-mark-shuttleworth.png" alt="mark-shuttleworth">
+       </picture>
+       <picture hidden class="picture" id="pilot-image">
+            <source srcset="assets/crew/image-victor-glover.webp" type="image/webp">
+            <img src="./assets/crew/image-victor-glover.png" alt="-victor-glover">
+       </picture>
+    </main>
+    
+
+
+
+
+<!-- 
+The defer is a Boolean value, used to indicate that script is executed after the document has been parsed. It declares that the script will not create any content. ... So, the browser can continue the parsing of the rest of the page. The <script> with the defer attribute does not block the page.
+-->
+<script src="./index.js" defer></script>    
+<script src="./tablist.js" defer></script>
+</body>
+</html>

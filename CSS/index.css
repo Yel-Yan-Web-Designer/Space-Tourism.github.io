@@ -1,0 +1,749 @@
+/* 
+======================================
+            Custom Properties
+======================================
+*/
+:root{
+    /* colors */
+    --clr-dark: 230 35% 7%;
+    --clr-light: 231 77% 90%;
+    --clr-white: 0 0% 100%;
+
+    /* font sizes */
+    --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
+    --fs-800: 3.5rem;   /* 56px */
+    --fs-700: 1.5rem;   /* 24px */
+    --fs-600: 1rem;     /* 16px */
+    --fs-500: 1rem;  /* 16px */
+    --fs-400: 0.9375rem;/*  15px */
+    --fs-300: 1rem;     /* 16px */
+    --fs-200: 0.875rem; /*  14px */
+
+    /* font families */
+    --ff-serif: "Bellefair", serif;
+    --ff-sans-cond: "Barlow Condensed", sans-serif;
+    --ff-sans-normal: "Barlow", sans-serif;
+}
+
+@media (min-width: 35em){ /* 35em = 560px */
+    :root{
+        --fs-800: 5rem;     /* 35px */
+        --fs-700: 2.5rem;   /* 40px */
+        --fs-600: 1.5rem;   /* 32px */
+        --fs-500: 1.25rem;  /* 20px */
+        --fs-400: 1rem;     /* 16px */
+    }
+}
+@media (min-width: 45em){ /* 45em = 720px */
+    :root{
+    --fs-800: 6.25rem;  /* 100px */
+    --fs-700: 3.5rem;   /* 56px */
+    --fs-600: 2rem;     /* 32px */
+    --fs-500: 1.75rem;  /* 28px */
+    --fs-400: 1.125rem; /* 18px */
+    }
+}
+/* 
+======================================
+                Reset
+======================================
+*/
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* ---Box sizing--- */
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+/* ---Reset Margins--- */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture{
+    margin: 0; /*prevent margins collapsing*/
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-weight: 400; /* explicit setting default font weight */
+}
+/* ---Set Up The Body--- */
+html{
+   scroll-behavior: smooth;
+} 
+body{
+    font-family: var(--ff-sans-normal);
+    font-size: var(--fs-400);
+
+    color: hsl(var(--clr-white));
+    background-color: hsl(var(--clr-dark));
+
+    line-height: 1.5;   /* Browser default is 1.4 */
+    min-height: 100vh;  /* prevent any shot pages issues */
+
+    /* make grid for grid container */
+    display: grid;
+    grid-template-rows: min-content 1fr;
+
+    /* no more scrolling issue */
+    overflow-x: hidden;
+}
+
+/* ---make images easier to work with it---  */
+img,
+picture{
+    /* 
+    hide display block for picture display probelm
+    display property override the hidden attribute.
+    */
+    /* display: block; */
+    max-width: 100%;
+}
+/* ---make form elements easier to work with it--- */
+input,
+button,
+textarea,
+select{
+/* By default, all these form elements don't inherit the font properties  */
+    font: inherit; 
+}
+
+/* ---remove animation for people who've turned them off--- */
+@media (prefers-reduced-motion: reduce) {  
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* 
+======================================
+            Utility Classes
+======================================
+*/
+
+/* ---General--- */
+.flex{
+    display: flex;
+    gap: var(--gap, 1rem);
+}
+.grid{
+    display: grid;
+    gap: var(--gap, 1rem);
+}
+.d-block{
+    display: block;
+}
+.flow > * + * {
+    margin-top: var(--flowspace, 1rem); 
+    /* outline: 1px solid red; */
+}
+.container{
+/* 
+    padding-inline: 2em; 
+    Modern Css new property logical property
+
+    padding-inline means looking at the inline access of my container so it will be the left and the right side
+    not the top and bottom
+*/
+    padding: 0 2em;     /* padding-inline: 2em */
+    margin: 0 auto;     /* margin-inline: auto */
+    max-width: 80rem;   /* 1280px */
+}
+
+.sr-only{
+/* 
+    sr = screen reader only which means it's only for assistive technology
+    that are reading the page to somebody if they are visiting the page and they are visually unpair.
+    visually hide it
+*/
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;  /* added line */
+    border: 0;
+}
+.skip-to-content{
+    position: absolute;
+    padding: 0.2em 0.7em;
+    
+    background-color: hsl( var(--clr-white) / 1);
+    color: hsl(var(--clr-dark));
+    text-decoration: none;
+
+    margin-inline: auto;
+    transform: translateY(-150%);
+    transition: transform 150ms ease-in-out;
+}
+.skip-to-content:focus{
+    transform: translateY(0);
+}
+/* ---Colors--- */
+.bg-dark {background-color: hsl(var(--clr-dark));}
+.bg-accent {background-color: hsl(var(--clr-light));}
+.bg-white {background-color: hsl(var(--clr-white));}
+
+.text-dark {color: hsl(var(--clr-dark));}
+.text-accent {color: hsl(var(--clr-light));}
+.text-white {color: hsl(var(--clr-white));}
+
+/* ---Typography--- */
+.ff-serif {font-family: var(--ff-serif);}
+.ff-sans-cond {font-family: var(--ff-sans-cond);}
+.ff-sans-normal {font-family: var(--ff-sans-normal);}
+
+.letter-spacing-1 {letter-spacing: 4.75px;}
+.letter-spacing-2 {letter-spacing: 2.7px;}
+.letter-spacing-3 {letter-spacing: 2.35px;}
+
+.uppercase {text-transform: uppercase;}
+
+.fs-900 {font-size: var(--fs-900);}
+.fs-800 {font-size: var(--fs-800);}
+.fs-700 {font-size: var(--fs-700);}
+.fs-600 {font-size: var(--fs-600);}
+.fs-500 {font-size: var(--fs-500);}
+.fs-400 {font-size: var(--fs-400);}
+.fs-300 {font-size: var(--fs-300);}
+.fs-200 {font-size: var(--fs-200);}
+
+.fs-900,
+.fs-800,
+.fs-700,
+.fs-600 {
+    line-height: 1.1;
+}
+
+.number-title {
+    text-transform: uppercase;
+    font-size: var(--fs-500);
+    font-family: var(--ff-sans-cond);
+    letter-spacing: 4.72px;
+}
+.number-title > span {
+    font-weight: 700;
+    margin-right: 0.5em;
+    color: hsl(var(--clr-light) / .25);
+}
+
+/* 
+======================================
+            Components
+======================================
+*/
+.large-button{
+    display: inline-grid;
+    place-items: center;
+
+    font-size: 1.25rem;
+    position: relative;
+    padding: 0 2em;
+    text-decoration: none;
+    aspect-ratio: 1 ;
+    border-radius: 50%;
+    z-index: 1;
+}
+.large-button::after{
+    content: '';
+    background: hsl( var(--clr-white) / .15);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: -1;
+
+    opacity: 0;
+    transition: opacity 500ms linear, transform 750ms ease-in-out;
+}
+.large-button:hover::after,
+.large-button:focus::after{
+    transform: scale(1.5);
+    opacity: 1;
+}
+/* ---Primary Navigation--- */
+.logo{
+/* 
+this means logo's margin set at 1.5rem until the preferred value of 3vw becomes
+greater than that of 1.5rem.
+Same as above margin set at 3vw until the maximum value of 3.5rem becomes greater than that of
+3vw. 
+*/
+    margin: 1.5rem clamp(1rem, 3vw, 2.5rem);  /* clamp(1.5rem, 6vw, 3.5rem) */
+}
+.primary-header{
+    justify-content: space-between;
+    align-items: center;
+}
+.primary-navigation{
+    user-select: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /* add gap for overlapping logo on medium screen */
+    --gap: clamp(1rem, 3vw, 3.5rem);
+    --underline-gap: 2rem;
+    /* add glass bg color */
+    background-color: hsl(var(--clr-white) / .1);
+    backdrop-filter: blur(0.5rem);
+}
+.mobile-nav-toggle{
+    display: none;
+}
+/* primary navigation for small screen */
+@media(max-width: 35rem){
+    .primary-navigation{
+        --underline-gap: 1rem;
+        flex-direction: column;
+        position: fixed;
+        inset: 0 0 0 30%;
+        z-index: 1000;
+        padding: min(6rem, 15vh) 2rem;  /* choose the youngest between 6rem or 15vh*/
+        transform: translateX(100%);
+        transition: transform 500ms ease-in-out;
+    }
+    .primary-navigation.underline-indicators > .active{
+        border: 0;
+    }
+    .primary-navigation[data-visible="true"]{
+        transform: translateX(0);
+    }
+    .mobile-nav-toggle{
+        display: block;
+        position: absolute;
+        z-index: 2000;
+        top: 2rem; right: 2rem;
+        background: transparent;
+        background-image: url(../assets/shared/icon-hamburger.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 1.5rem;
+        aspect-ratio: 1;
+        border: 0;
+    }
+    .mobile-nav-toggle[aria-expanded="true"]{
+        background-image: url(../assets/shared/icon-close.svg);
+    }
+    .mobile-nav-toggle[aria-expanded="true"]:focus-visible{
+        outline: 1px solid white;
+        outline-offset: 1px solid white;
+    }
+}
+.primary-navigation a {
+    text-decoration: none;
+}
+.primary-navigation a > span {
+    font-weight: 700;
+    margin-right: 0.5em;
+}
+
+/* ---primary navigation for medium screen--- */
+@media(min-width: 35rem){
+    .primary-navigation{
+        padding-inline: clamp(0.2rem, 1vw, 4rem);
+    }    
+}
+@media(min-width: 35rem) and (max-width: 40rem){
+    .primary-navigation a > span {
+        display: none;
+    }
+}
+/* ---primary navigation for large screen--- */
+@media(min-width: 45rem){
+    .primary-header::after{
+        content: '';
+        display: block;
+        position: relative;
+        background-color: hsl( var(--clr-white) / 1);
+        height: 1px;
+        width: 100%;
+        order: 1;
+        z-index: 10;
+        margin-right: -1.53rem;
+    }
+    .nav{
+        order: 2;
+    }
+    .primary-navigation{
+        /* 
+        margin-block means sets an element’s margin-block-start and margin-block-end values
+        margin-start: 2rem and margin-end: 2rem;
+        */
+        margin-block: 2rem;
+    }
+}
+
+
+.underline-indicators > * {
+    padding: var(--underline-gap, 1rem) 0;
+    border: 0;
+    cursor: pointer;
+    border-bottom: 0.2em solid hsl( var(--clr-white) / 0);
+}
+.underline-indicators > *:hover,
+.underline-indicators > *:focus{
+    border-bottom: 0.2em solid hsl( var(--clr-white) / .5);
+}
+.underline-indicators > .active,
+.underline-indicators > [aria-selected = "true"]{
+    color: 0.2em solid hsl( var(--clr-white) / 1);
+    border-bottom: 0.2em solid hsl( var(--clr-white) / 1);
+}
+.tab-list {
+    --gap: 2rem;
+}
+.tab-list  a {
+    text-decoration: none;
+    color: hsl(var(--clr-light)); 
+}
+.dots-indicators > * {
+    border-radius: 50%;
+    border: 0;
+    padding: 0.5em;     /*aspect-ratio: 1;*/
+    cursor: pointer;
+    background-color:  hsl( var(--clr-white) / 1);
+}
+.dots-indicators > *:hover,
+.dots-indicators > *:focus{
+    background-color:  hsl( var(--clr-white) / .5);
+}
+.dots-indicators > [aria-selected = "true"]{
+    background-color: hsl( var(--clr-white) / 1);
+}
+
+.numbers-indicators > * {
+    display: grid;
+    place-items: center;
+    border: 1px solid hsl(var(--clr-white));
+
+    padding: 0 2em;
+    aspect-ratio: 1;
+    border-radius: 50%;
+
+    transition: opacity 500ms linear, transform 750ms ease-in-out;
+}
+.numbers-indicators > *:hover,
+.numbers-indicators > *:focus{
+    background-color: transparent;
+    color: hsl(var(--clr-white));
+}
+.numbers-indicators > [aria-selected = "true"]{
+    background-color: hsl( var(--clr-white) / 1);
+    color: hsl(var(--clr-dark));
+}
+
+/* 
+======================================
+    Page specific Background
+======================================
+*/
+/* ---Home--- */
+body{
+    background-size: cover;
+    background-position: bottom center;
+}
+.home{
+    background-image: url(../assets/home/background-home-mobile.jpg);
+}
+@media(min-width: 35rem){
+    .home{
+        background-image: url(../assets/home/background-home-tablet.jpg);
+        background-position: center center;
+    }
+}
+@media(min-width: 45rem){
+    .home{
+        background-image: url(../assets/home/background-home-desktop.jpg);
+        /* background-position: center center; */
+    }
+}
+/* ---Destination--- */
+.destination{
+    background-image: url(../assets/destination/background-destination-mobile.jpg);
+}
+@media(min-width: 35rem){
+    .destination{
+        background-image: url(../assets/destination/background-destination-tablet.jpg);
+    }
+}
+@media(min-width: 45rem){
+    .destination{
+        background-image: url(../assets/destination/background-destination-desktop.jpg);
+        background-position: center center;
+    }
+}
+/* ---Crew page--- */
+.crew{
+    background-image: url(../assets/crew/background-crew-mobile.jpg);
+}
+@media (min-width: 35rem) {
+    .crew{
+        background-image: url(../assets/crew/background-crew-tablet.jpg);
+    }
+}
+@media (min-width: 45rem) {
+    .crew{
+        background-image: url(../assets/crew/background-crew-desktop.jpg);
+    }
+}
+/* technology page */
+.technology{
+    background-image: url(../assets/technology/background-technology-mobile.jpg);
+}
+@media (min-width: 35rem) {
+    .technology{
+        background-image: url(../assets/technology/background-technology-tablet.jpg);
+    }
+}
+@media (min-width: 45rem) {
+        .technology{
+            background-image: url(../assets/technology/background-technology-desktop.jpg);
+        }
+}
+/* 
+======================================
+             Layout
+======================================
+*/
+
+.grid-container{
+    text-align: center;
+    display: grid;
+    place-items: center;
+    padding: 0 1rem;
+    padding-bottom: 2rem;
+}
+.grid-container p:not([class]) {
+/* gives paragraph max-width */
+    max-width: 50ch;
+    /* outline: 1px solid green; */
+}
+.number-title{
+    grid-area: title;
+}
+/* ---destination continer layout--- */
+/* mobile */
+.grid-container--destination{
+    grid-template-areas: 
+        "title"
+        "image"
+        "tabs"
+        "content"
+    ;
+}
+.grid-container--destination > picture {
+    grid-area: image;
+    max-width: 60%;
+}
+.grid-container--destination > .tab-list{
+    grid-area: tabs;
+}
+.grid-container--destination .tab-list > * {
+    background: transparent;
+}
+.grid-container--destination > .destination-info{
+    grid-area: content;
+}
+.destination-meta{
+    flex-direction: column;
+    border-top: 1px solid hsl(var(--clr-white) / .2);
+    margin-top: 1.5rem;
+    padding-top: 2rem;
+}
+.destination-meta p {
+    font-size: 1.75rem;
+}
+
+/* tablet */
+@media(min-width: 35rem){
+    .number-title{
+        justify-self: left;
+        margin-top: 2rem;
+    }
+    .destination-meta{
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+/* large screen */
+@media (min-width: 45em ){  /* 45em = 720px*/
+    .grid-container{
+        text-align: left;
+        column-gap: var(--container-gap, 2rem); /*if we don't need to change that it will stick at 2rem */
+        grid-template-columns: minmax(1rem,1fr) repeat(2, minmax(0, 40rem)) minmax(1rem, 1fr);
+    }
+    .grid-container--home > *:first-child {
+        grid-column: 2;
+    }
+    .grid-container--home > *:last-child {
+        grid-column: 3;
+    }
+    .grid-container--home {
+        padding-bottom: max(6rem, 20vh); /* max choose the bigger one 6rem or 20vh */
+        align-items: end;
+    }
+    .grid-container--destination{
+        justify-items: start;
+        align-content: start;
+        grid-template-areas: 
+            ". title title ."
+            ". image tabs ."
+            ". image content ."
+        ;
+    }
+    .grid-container--destination > picture{
+        max-width: 90%;
+    }
+    .destination-meta{
+        --gap: 5rem;
+        justify-content: start;
+    }
+}
+/* ---crew layout--- */
+/* mobile */
+.grid-container--crew{
+    grid-template-areas: 
+        "title"
+        "image"
+        "dots"
+        "content"
+    ;
+}
+.crew-details__title{
+    opacity: 0.5;
+}
+.grid-container--crew > picture{
+    grid-area: image;
+    max-width: 60%;
+    border-bottom: 1px solid hsl(var(--clr-white) / .1);
+}
+.grid-container--crew > .dots-indicators{
+    grid-area: dots;
+}
+.grid-container--crew > .crew-details{
+    grid-area: content;
+}
+/* tablet */
+@media (min-width: 35rem) {
+    .grid-container--crew{
+        grid-template-areas: 
+            "title"
+            "content"
+            "dots"
+            "image"
+        ;
+    }
+    .crew-details{
+        margin-top: 4rem;
+    }
+}
+/* large screen */
+@media (min-width: 45rem) {
+    .grid-container--crew{
+        grid-template-columns: minmax(1rem,1fr) minmax(0, 40rem) minmax(0, 20rem) minmax(1rem, 1fr);
+        justify-items: start;
+        grid-template-areas: 
+            ". title title ."
+            ". content image ."
+            ". dots image ."
+        ;
+    }
+    .crew-details{
+        margin: 0;
+    }
+    .dots-list{
+        justify-self: left;
+        margin: 0;
+    }
+    .grid-container--crew > picture {
+        align-self: end;
+        justify-self: right;
+        max-width: 75%;
+    }
+}
+
+[role = tab]:focus{
+    color: green;
+}
+
+/* ---technology layout--- */
+.grid-container--technology{
+    grid-template-areas: 
+        "title"
+        "image"
+        "number-tabs"
+        "content"
+    ;
+    padding: 0;
+}
+.grid-container--technology > .picture{
+    grid-area: image;
+    max-width: 100%;
+}
+/* for mobile and tablet 
+    This is between 320px and 45rem
+*/
+@media (min-width: 320px) and (max-width: 44.8rem){
+    .numbers-indicators{
+        width: 80%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .numbers-indicators > * {
+        /* resize the buttons */
+        padding: 0 1.6rem
+    }
+    .grid-container--technology .numbers-indicators > * + * {
+        margin: 0;
+    }
+    .launch-article > * + * {
+        margin-top: 1.2rem;
+    }
+}
+/* for large screen */
+@media(min-width: 45rem){
+    .grid-container--technology{
+        /* grid-template-columns: minmax(1rem, 1.5rem) minmax(6rem, 10rem) minmax(0, 40rem) minmax(0, 15rem); */
+        grid-template-columns: minmax(1rem, 1.5rem) minmax(4rem, 0rem) minmax(0, 40rem) minmax(0, 30rem);
+        grid-template-rows: minmax(1rem, 2rem) minmax(0, 25rem) minmax(1rem, 7rem);
+        grid-template-areas: 
+            ". title title ."
+            ".number-tab content img "
+            ". number-tab  content img "
+        ;
+        padding: 2rem;
+    }
+    .grid-container--technology > .numbers-title{
+        grid-area: title;
+        grid-row: 1;
+    }
+    .grid-container--technology > .numbers-indicators{
+        grid-area: number-tab;
+    }
+    .grid-container--technology > article{
+        grid-area: content;
+    }
+    .grid-container--technology > .picture{
+        grid-area: img;
+    }
+}

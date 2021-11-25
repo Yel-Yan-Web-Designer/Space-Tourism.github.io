@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/png" sizes ="32x32" href="./assets/favicon-32x32.png">
+        <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Bellefair&family=Barlow:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- =====Custom CSS===== -->
+    <link rel="stylesheet" href="./CSS/index.css">
+    <title>Frontend Mentor | Space Tourism</title>
+</head>
+<body class="destination">
+    <a href="#main" class="skip-to-content ff-serif">Skip To Content</a>
+    <!-- Header -->
+    <header class="flex primary-header">
+        <div>
+            <img src="./assets/shared/logo.svg" class="logo" alt="space tourism logo">
+        </div>
+        <!-- hamburger button -->
+        <!-- this aria-controls the id="primary-navigation" --->
+        <button class="mobile-nav-toggle" aria-controls="primary-navigation"> 
+            <span class="sr-only" aria-expanded="false">Menu</span>
+        </button>
+        <!-- navigation -->
+        <nav class="nav">
+            <ul id="primary-navigation" data-visible="false" class="primary-navigation flex underline-indicators">
+                <!--
+                    Adding aria-hidden="true" to an element removes that element and all of its children from the accessibility tree. This can improve the experience for assistive technology users by hiding:
+                  -->
+                <li><a class="text-white uppercase letter-spacing-2" href="index.html"><span>00</span>Home</a></li>
+                <li class="active"><a class="text-white uppercase letter-spacing-2" href="moon.html"><span aria-hidden="true">01</span>Destination</a></li>
+                <li><a class="text-white uppercase letter-spacing-2" href="crew-commander.html"><span aria-hidden="true">02</span>Crew</a></li>
+                <li><a class="text-white uppercase letter-spacing-2" href="techonology.html"><span aria-hidden="true">03</span>Technology</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- moon -->
+    <main id="main" class="grid-container grid-container--destination flow" style="--flowspace: 1.5rem;">
+        <h1 class="number-title"><span aria-hidden="true">01</span>Pick your destination</h1>
+        
+        <!-- hidden hide the element, pictures are collapse each other -->
+        <picture class="picture" id="moon-pic">
+            <source srcset="./assets/destination/image-moon.webp" type="image/webp">
+            <img src="./assets/destination/image-moon.png" alt="the moon" >
+        </picture>
+        <picture hidden class="picture" id="mars-pic">
+            <source srcset="./assets/destination/image-mars.webp" type="image/webp">
+            <img src="./assets/destination/image-mars.png" alt="the planet mars" >
+        </picture>
+        <picture hidden class="picture" id="europa-pic">
+            <source srcset="./assets/destination/image-europa.webp" type="image/webp">
+            <img src="./assets/destination/image-europa.png" alt="the planet europa" >
+        </picture>
+        <picture hidden class="picture" id="titan-pic">
+            <source srcset="./assets/destination/image-titan.webp" type="image/webp">
+            <img src="./assets/destination/image-titan.png" alt="the planet titan" >
+        </picture>
+
+
+        <!-- Tab lists -->
+        <div class="tab-list underline-indicators flex" role="tablist" aria-label="destanation-list">
+            <button aria-selected="true" role="tab" aria-controls="moon-tab" data-picture="moon-pic" class="uppercase ff-sans-cond text-accent bg-dark letter-spacing-2"  tabindex="0">Moon</button>
+            <button aria-selected="false" role="tab" aria-controls="mars-tab" data-picture="mars-pic" class="uppercase ff-sans-cond text-accent bg-dark letter-spacing-2" tabindex="-1">Mars</button>
+            <button aria-selected="false" role="tab" aria-controls="europa-tab" data-picture="europa-pic" class="uppercase ff-sans-cond text-accent bg-dark letter-spacing-2" tabindex="-1">Europa</button>
+            <button aria-selected="false" role="tab" aria-controls="titan-tab" data-picture="titan-pic" class="uppercase ff-sans-cond text-accent bg-dark letter-spacing-2" tabindex="-1">Titan</button>
+        </div>
+        
+        <!-- article -->
+
+        <!-- Moon -->
+        <article class="destination-info" id="moon-tab" role="tabpanel">
+            <h2 class="fs-800 ff-serif uppercase text-white">Moon</h2>
+    
+            <p> See our planet as you’ve never seen it before. A perfect relaxing trip away to help 
+            regain perspective and come back refreshed. While you’re there, take in some history 
+            by visiting the Luna 2 and Apollo 11 landing sites.</p>
+        
+            <div class="destination-meta flex">
+
+                <div>
+                    <h3 class="fs-300 text-accent">Avg. distance</h3>
+                    <p class="fs-500 text-white ff-serif uppercase">384,400 km</p>
+                </div>
+                <div>
+                    <h3 class="fs-300 text-accent">Est. travel time</h3>
+                    <p class="fs-500 text-white ff-serif uppercase">3 days</p>
+    
+                </div>
+                
+            </div>
+            
+        </article>
+
+        <!-- mars -->
+        <article hidden class="destination-info" id="mars-tab" role="tabpanel">
+            <h2 class="fs-800 ff-serif uppercase text-white">Mars</h2>
+    
+            <p> 
+                Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons, 
+                the tallest planetary mountain in our solar system. It’s two and a half times 
+                the size of Everest!.Always Fill with Volcano on the planet mars.
+
+            </p>
+        
+            <div class="destination-meta flex">
+
+                <div>
+                    <h3 class="fs-300 text-accent">Avg. distance</h3>
+                    <p class="fs-500 text-white ff-serif uppercase">225 mil. km</p>
+                </div>
+                <div>
+                    <h3 class="fs-300 text-accent">Est. travel time</h3>
+                    <p class="fs-500 text-white ff-serif uppercase">9 months</p>
+    
+                </div>
+                
+            </div>
+            
+        </article>
+        <!-- europa -->
+        <article hidden class="destination-info" id="europa-tab" role="tabpanel">
+            <h2 class="fs-800 ff-serif uppercase text-white">europa</h2>
+    
+            <p> The smallest of the four Galilean moons orbiting Jupiter, Europa is a 
+                winter lover’s dream. With an icy surface, it’s perfect for a bit of 
+                ice skating, curling, hockey, or simple relaxation in your snug 
+                wintery cabin.</p>
+        
+            <div class="destination-meta flex">
+
+                <div>
+                    <h3 class="fs-300 text-accent">Avg. distance</h3>
+                    <p class="fs-500 text-white ff-serif uppercase">628 mil. km</p>
+                </div>
+                <div>
+                    <h3 class="fs-300 text-accent">Est. travel time</h3>
+                    <p class="fs-500 text-white ff-serif uppercase">3 years</p>
+    
+                </div>
+                
+            </div>
+            
+        </article>
+        <!-- titan -->
+        <article hidden class="destination-info" id = "titan-tab" role="tabpanel">
+            <h2 class="fs-800 ff-serif uppercase text-white">Titan</h2>
+    
+            <p> The only moon known to have a dense atmosphere other than Earth, Titan 
+                is a home away from home (just a few hundred degrees colder!). As a 
+                bonus, you get striking views of the Rings of Saturn.</p>
+        
+            <div class="destination-meta flex">
+
+                <div>
+                    <h3 class="fs-300 text-accent">Avg. distance</h3>
+                    <p class="fs-500 text-white ff-serif uppercase">1.6 bil. km</p>
+                </div>
+                <div>
+                    <h3 class="fs-300 text-accent">Est. travel time</h3>
+                    <p class="fs-500 text-white ff-serif uppercase">7 years</p>
+    
+                </div>
+                
+            </div>
+            
+        </article>
+
+      </main>
+    
+
+
+
+
+<!-- 
+The defer is a Boolean value, used to indicate that script is executed after the document has been parsed. It declares that the script will not create any content. ... So, the browser can continue the parsing of the rest of the page. The <script> with the defer attribute does not block the page.
+-->
+<script src="./index.js" defer></script>    
+<script src="./tablist.js" defer></script>
+</body>
+</html>

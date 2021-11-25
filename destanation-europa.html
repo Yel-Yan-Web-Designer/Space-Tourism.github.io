@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/png" sizes ="32x32" href="./assets/favicon-32x32.png">
+        <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Bellefair&family=Barlow:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- =====Custom CSS===== -->
+    <link rel="stylesheet" href="./CSS/index.css">
+    <title>Frontend Mentor | Space Tourism</title>
+</head>
+<body class="destination">
+    <a href="#main" class="skip-to-content ff-serif">Skip To Content</a>
+    <!-- Header -->
+    <header class="flex primary-header">
+        <div>
+            <img src="./assets/shared/logo.svg" class="logo" alt="space tourism logo">
+        </div>
+        <!-- hamburger button -->
+        <!-- this aria-controls the id="primary-navigation" --->
+        <button class="mobile-nav-toggle" aria-controls="primary-navigation"> 
+            <span class="sr-only" aria-expanded="false">Menu</span>
+        </button>
+        <!-- navigation -->
+        <nav class="nav">
+            <ul id="primary-navigation" data-visible="false" class="primary-navigation flex underline-indicators">
+                <!--
+                    Adding aria-hidden="true" to an element removes that element and all of its children from the accessibility tree. This can improve the experience for assistive technology users by hiding:
+                  -->
+                <li class="active"><a class="text-white uppercase letter-spacing-2" href="index.html"><span>00</span>Home</a></li>
+                <li><a class="text-white uppercase letter-spacing-2" href="moon.html"><span aria-hidden="true">01</span>Destination</a></li>
+                <li><a class="text-white uppercase letter-spacing-2" href="crew-commander.html"><span aria-hidden="true">02</span>Crew</a></li>
+                <li><a class="text-white uppercase letter-spacing-2" href="#"><span aria-hidden="true">03</span>Technology</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- moon -->
+    <main id="main" class="grid-container grid-container--destination flow" style="--flowspace: 1.5rem;">
+        <h1 class="number-title"><span aria-hidden="true">01</span>Pick your destination</h1>
+        
+        <picture>
+            <source srcset="./assets/destination/image-europa.webp" type="image/webp">
+            <img src="./assets/destination/image-europa.png" alt="the europa" >
+        </picture>
+
+        <!-- Tab lists -->
+        <div class="tab-list underline-indicators flex">
+            <button aria-selected="true" class="uppercase ff-sans-cond text-accent bg-dark letter-spacing-2">Moon</button>
+            <button aria-selected="false" class="uppercase ff-sans-cond text-accent bg-dark letter-spacing-2">Mars</button>
+            <button aria-selected="false" class="uppercase ff-sans-cond text-accent bg-dark letter-spacing-2">Europa</button>
+            <button aria-selected="false" class="uppercase ff-sans-cond text-accent bg-dark letter-spacing-2">Titan</button>
+        </div>
+        
+        <!-- article -->
+        <article class="destination-info">
+            <h2 class="fs-800 ff-serif uppercase text-white">Europa</h2>
+    
+            <p>  The smallest of the four Galilean moons orbiting Jupiter, Europa is a 
+                winter lover’s dream. With an icy surface, it’s perfect for a bit of 
+                ice skating, curling, hockey, or simple relaxation in your snug 
+                wintery cabin.</p>
+        
+            <div class="destination-meta flex">
+
+                <div>
+                    <h3 class="fs-300 text-accent">Avg. distance</h3>
+                    <p class="fs-500 text-white ff-serif uppercase">628 mil. km</p>
+                </div>
+                <div>
+                    <h3 class="fs-300 text-accent">Est. travel time</h3>
+                    <p class="fs-500 text-white ff-serif uppercase">3 years</p>
+    
+                </div>
+                
+            </div>
+            
+        </article>
+        
+
+      </main>
+    
+
+
+
+
+<!-- 
+The defer is a Boolean value, used to indicate that script is executed after the document has been parsed. It declares that the script will not create any content. ... So, the browser can continue the parsing of the rest of the page. The <script> with the defer attribute does not block the page.
+-->
+<script src="./index.js" defer></script>    
+</body>
+</html>
